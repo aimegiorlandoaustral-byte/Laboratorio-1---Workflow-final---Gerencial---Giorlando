@@ -1,6 +1,10 @@
 # Laboratorio-1-Workflow-final-Gerencial-Giorlando
 Esta notebook corresponde a la entrega final de Laboratorio de Implementación I de la Maestría en Ciencia de Datos de la Universidad Austral (cohorte 2025–2026, modalidad virtual), utilizando el workflow de la modalidad Gerencial sobre el problema de predicción de BAJA+2. Partiendo del workflow baseline, en la versión final (“25_FE hist nuevo + IPC”) se introdujeron tres cambios principales orientados a mejorar la ganancia esperada con la menor dispersion posible:
+
 Data drifting ajustado por IPC (Índice FACPCE): se incorporó un ajuste de las variables monetarias por mes utilizando un coeficiente de actualización basado en el IPC. Esto permitió homogeneizar montos a precios comparables en el tiempo, reduciendo el impacto de la inflación.
+
 Feature engineering histórico: se agregaron lags y delta-lags (principalmente de orden 1) sobre un conjunto dirigido de variables bancarias relevantes (rentabilidad, saldos, consumos de tarjeta, préstamos, etc.).
+
 Optimización de hiperparámetros: la BO se concentró en encontrar combinaciones de hiperparámetros que aprovecharan learning rates pequeños y muchas iteraciones potenciales, pero dejando que el early stopping detenga el entrenamiento cuando dejaran de aparecer mejoras reales
+
 La notebook final se corrió con 5 semillas distintas: 105727, 123457, 150011, 193939 y 409993, midiendo la dispersión de la ganancia para cada configuración. Para el submit final en la competencia de Kaggle elegi la corrida con semilla 150011: con 1050 envíos se obtuvo una ganancia de 4031, que si bien no es la ganancia máxima entre todas las semillas, es la más cercana a la ganancia promedio y la que muestra menor variabilidad, por lo que se consideró la opción más robusta para generalizar fuera del conjunto de validación.
